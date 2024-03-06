@@ -8,7 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
-import DayListItem from './src/components/core/DayListItem';
+import NumbersScreen from './src/components/core/NumbersScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Day1 from './src/components/core/Day1';
+
+const Stack = createNativeStackNavigator();
 
 // let days = [
 //   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
@@ -19,19 +24,40 @@ let days = [...Array(24)].map((val: any, index: number) => index + 1);
 
 const App = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar />
-      <FlatList
-        data={days}
-        numColumns={2}
-        contentContainerStyle={{gap: 10, padding: 10}}
-        columnWrapperStyle={{}}
-        renderItem={({item}) => <DayListItem day={item} />}
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={NumbersScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Day1"
+          component={Day1}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default App;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  quicksandLight: {
+    fontFamily: 'Inter-Light',
+    fontSize: 20,
+  },
+  quicksandRegular: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 20,
+  },
+  ralewayItalic: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 20,
+  },
+  ralewayThin: {
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 20,
+  },
+});
