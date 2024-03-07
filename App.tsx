@@ -12,6 +12,8 @@ import NumbersScreen from './src/components/core/NumbersScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Day1 from './src/components/core/Day1';
+import Day2 from './src/components/core/Day2';
+import OnBoardingScreen from './src/components/core/OnBoardingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +36,16 @@ const App = () => {
         <Stack.Screen
           name="Day1"
           component={Day1}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Day2"
+          component={Day2}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OnBoardingScreen"
+          component={OnBoardingScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

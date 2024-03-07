@@ -10,7 +10,9 @@ const Day1 = () => {
         justifyContent: 'center',
         backgroundColor: '#fff',
       }}>
-      <Text>Day1</Text>
+      <Text style={{fontSize: 60, fontFamily: 'Inter-SemiBold'}}>
+        Day one details screen
+      </Text>
     </SafeAreaView>
   );
 };
