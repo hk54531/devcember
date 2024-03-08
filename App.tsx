@@ -16,6 +16,7 @@ import Day2 from './src/components/core/Day2';
 import OnBoardingScreen from './src/components/core/OnBoardingScreen';
 import Day3 from './src/components/core/Day3';
 import ContactList from './src/components/core/ContactList';
+import ContactDetailsScreen from './src/components/ContactDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,11 @@ const App = () => {
         <Stack.Screen
           name="ContactList"
           component={ContactList}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ContactDetailsScreen"
+          component={ContactDetailsScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -9,6 +9,7 @@ import {
   Text,
   TextInput,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import Contacts from 'react-native-contacts';
 import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
@@ -19,7 +20,7 @@ interface ContactItem {
   // Add other properties as needed
 }
 
-const ContactList = () => {
+const ContactList = (props: any) => {
   const [contacts, setContacts] = useState<ContactItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchText, setSearchText] = useState('');
@@ -159,7 +160,12 @@ const ContactList = () => {
 
   const renderItem = ({item}: any) => {
     return (
-      <View style={styles.contactCon}>
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('ContactDetailsScreen', item);
+          // console.log(item);
+        }}
+        style={styles.contactCon}>
         <View style={styles.imgCon}>
           <View style={styles.placeholder}>
             {item.thumbnailPath ? (
@@ -182,7 +188,7 @@ const ContactList = () => {
             {item?.phoneNumbers[0]?.number}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
