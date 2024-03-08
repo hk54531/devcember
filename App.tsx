@@ -14,15 +14,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Day1 from './src/components/core/Day1';
 import Day2 from './src/components/core/Day2';
 import OnBoardingScreen from './src/components/core/OnBoardingScreen';
+import Day3 from './src/components/core/Day3';
+import ContactList from './src/components/core/ContactList';
 
 const Stack = createNativeStackNavigator();
-
-// let days = [
-//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-//   23, 24,
-// ];
-
-let days = [...Array(24)].map((val: any, index: number) => index + 1);
 
 const App = () => {
   return (
@@ -46,6 +41,16 @@ const App = () => {
         <Stack.Screen
           name="OnBoardingScreen"
           component={OnBoardingScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Day3"
+          component={Day3}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ContactList"
+          component={ContactList}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
