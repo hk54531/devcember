@@ -82,7 +82,7 @@ const ContactDetailsScreen = ({route, navigation}: any) => {
           initialCheckedState[profile.label] = false;
         });
         setCheckedSocialProfiles(initialCheckedState);
-        console.log(checkedSocialProfiles, '???');
+        // console.log(checkedSocialProfiles, '???');
       } catch (error) {
         console.error('Error fetching contact details:', error);
       }
@@ -144,7 +144,7 @@ const ContactDetailsScreen = ({route, navigation}: any) => {
   //   };
 
   //vcard generator
-  const shareContact = () => {
+  const shareContact = async () => {
     if (
       !checkbox &&
       !checkboxEmail &&
@@ -193,27 +193,26 @@ const ContactDetailsScreen = ({route, navigation}: any) => {
     // Close the VCard string
     vCard += `END:VCARD`;
 
-    const path = RNFS.DocumentDirectoryPath + `/contact.vcf`;
-    RNFS.writeFile(path, vCard, 'utf8')
-      .then(async () => {
-        console.log('VCF file saved successfully:', path);
-        // Optionally, you can share the file here
-        // Share the VCard file
-        await Share.share({
-          title: 'Share Contact',
-          url: 'file://' + path,
-          //   type: 'text/vcard', // or 'text/x-vcard'
-        });
-      })
-      .catch(error => {
-        console.error('Error saving VCF file:', error);
-      });
+    await saveVcard(vCard);
 
     console.log(vCard);
     // Share the VCard
     // Share.share({
     //   message: vCard,
     // });
+  };
+  const saveVcard = async (vCard: string) => {
+    // console.log(vCard, '???', typeof vCard);
+    try {
+      const path = RNFS.DocumentDirectoryPath + `/contact.vcf`;
+      await RNFS.writeFile(path, vCard, 'utf8');
+      await Share.share({
+        title: 'Share Contact',
+        url: path,
+      });
+    } catch (error) {
+      console.log('Error saving VCF file:', JSON.stringify(error));
+    }
   };
 
   return (

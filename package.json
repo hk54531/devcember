@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-camera-roll/camera-roll": "^7.5.0",
     "@react-navigation/native": "^6.1.14",
     "@react-navigation/native-stack": "^6.9.22",
     "@types/react-native-vector-icons": "^6.4.18",
@@ -23,6 +24,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-vector-icons": "^10.0.3",
+    "react-native-vision-camera": "^3.9.1",
     "vcard4-ts": "^0.4.1"
   },
   "devDependencies": {

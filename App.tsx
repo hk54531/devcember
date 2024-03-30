@@ -19,13 +19,16 @@ import ContactList from './src/components/core/ContactList';
 import ContactDetailsScreen from './src/components/ContactDetailsScreen';
 import ContactInfo from './src/components/core/ContactInfo';
 import Notifications from './src/components/core/Notifications';
+import CameraScreen from './src/components/core/CameraScreen';
+import CountryCodeSelector from './src/components/core/CustomCountryCodePicker';
+import FocusMode from './src/components/core/FocusMode';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="FocusMode">
         <Stack.Screen
           name="Home"
           component={NumbersScreen}
@@ -69,6 +72,21 @@ const App = () => {
         <Stack.Screen
           name="Notifications"
           component={Notifications}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CameraScreen"
+          component={CameraScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CountryCodeSelector"
+          component={CountryCodeSelector}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FocusMode"
+          component={FocusMode}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
